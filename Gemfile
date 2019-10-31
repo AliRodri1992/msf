@@ -5,6 +5,7 @@ ruby '2.6.3'
 
 gem 'bootstrap'
 gem 'cocoon'
+gem 'devise'
 gem 'font-awesome-sass'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
