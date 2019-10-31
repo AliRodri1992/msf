@@ -1,0 +1,18 @@
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-signin'}) do |f|
+  = image_tag("bootstrap-solid.svg", class: "mb-4", width: "72", height: "72", alt: "")
+  h1.h3.mb-3.font-weight-normal Sign Up
+  = f.label :username, class: 'sr-only'
+  = f.text_field :username, placeholder: "Username", class: 'form-control'
+  = f.label :email, class: 'sr-only'
+  = f.text_field :email, placeholder: "Email", class: 'form-control'
+  = f.label :password, class: 'sr-only'
+  = f.password_field :password, placeholder: "Password", class: 'form-control'
+  = f.label :password_confirmation, class: 'sr-only'
+  = f.password_field :password_confirmation, placeholder: "Password Confirmation", class: 'form-control cpassword'
+  = f.submit "Sign up", class: "btn btn-lg btn-primary btn-block"
+  div.row.mt-1
+    .col-lg-6.text-left
+      - if controller_name != 'sessions'
+        = link_to "Log in", new_session_path(resource_name)
+    .col-lg-6.text-right
+  p.mt-5.mb-3.text-muted © 2019 -
