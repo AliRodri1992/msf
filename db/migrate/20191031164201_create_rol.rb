@@ -2,9 +2,9 @@ class CreateRol < ActiveRecord::Migration[5.2]
   def change
     create_table :rol do |t|
       t.string :name
-      t.datetime :deleted_at
 
       t.timestamps
+      t.timestamp :deleted_at
     end
     add_index :rol, :deleted_at
 
