@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_225646) do
+ActiveRecord::Schema.define(version: 2019_10_31_231902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,27 @@ ActiveRecord::Schema.define(version: 2019_10_31_225646) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "base_stats", force: :cascade do |t|
+    t.bigint "character_id"
+    t.integer "health"
+    t.integer "damage"
+    t.integer "armor"
+    t.integer "focus"
+    t.integer "resistance"
+    t.integer "critical_damage"
+    t.integer "critical_chance"
+    t.integer "speed"
+    t.integer "dodge_chance"
+    t.integer "block_chance"
+    t.integer "block_amount"
+    t.integer "accuracy"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_base_stats_on_character_id"
+    t.index ["deleted_at"], name: "index_base_stats_on_deleted_at"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -88,5 +109,6 @@ ActiveRecord::Schema.define(version: 2019_10_31_225646) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "base_stats", "characters"
   add_foreign_key "users", "rol"
 end
