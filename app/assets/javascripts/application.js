@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap
+//= require cocoon
 //= require activestorage
 //= require turbolinks
 //= require_tree .
