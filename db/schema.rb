@@ -62,10 +62,12 @@ ActiveRecord::Schema.define(version: 2019_10_31_231902) do
     t.text "description"
     t.integer "min_level"
     t.integer "max_level"
+    t.bigint "type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_characters_on_deleted_at"
+    t.index ["type_id"], name: "index_characters_on_type_id"
   end
 
   create_table "rol", force: :cascade do |t|
@@ -74,6 +76,14 @@ ActiveRecord::Schema.define(version: 2019_10_31_231902) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_rol_on_deleted_at"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_types_on_deleted_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -110,5 +120,6 @@ ActiveRecord::Schema.define(version: 2019_10_31_231902) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "base_stats", "characters"
+  add_foreign_key "characters", "types"
   add_foreign_key "users", "rol"
 end

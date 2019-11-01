@@ -5,7 +5,7 @@ class CreateCharacters < ActiveRecord::Migration[5.2]
       t.text :description
       t.integer :min_level
       t.integer :max_level
-
+      t.references :type, foreign_key: true
       t.timestamps
       t.timestamp :deleted_at
     end
