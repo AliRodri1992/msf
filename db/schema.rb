@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 2019_11_01_190517) do
 
   create_table "allegiances", force: :cascade do |t|
     t.string "name"
-    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_allegiances_on_deleted_at"
   end
 
@@ -72,11 +72,13 @@ ActiveRecord::Schema.define(version: 2019_11_01_190517) do
     t.integer "max_level"
     t.bigint "type_id"
     t.bigint "allegiance_id"
+    t.bigint "origin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["allegiance_id"], name: "index_characters_on_allegiance_id"
     t.index ["deleted_at"], name: "index_characters_on_deleted_at"
+    t.index ["origin_id"], name: "index_characters_on_origin_id"
     t.index ["type_id"], name: "index_characters_on_type_id"
   end
 
@@ -97,6 +99,14 @@ ActiveRecord::Schema.define(version: 2019_11_01_190517) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_organizations_on_deleted_at"
+  end
+
+  create_table "origins", force: :cascade do |t|
+    t.string "name"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_origins_on_deleted_at"
   end
 
   create_table "rol", force: :cascade do |t|
@@ -150,6 +160,7 @@ ActiveRecord::Schema.define(version: 2019_11_01_190517) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "base_stats", "characters"
   add_foreign_key "characters", "allegiances"
+  add_foreign_key "characters", "origins"
   add_foreign_key "characters", "types"
   add_foreign_key "characters_organizations", "characters"
   add_foreign_key "characters_organizations", "organizations"
