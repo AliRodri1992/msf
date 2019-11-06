@@ -58,9 +58,9 @@ ActiveRecord::Schema.define(version: 2019_11_01_190517) do
     t.integer "block_chance"
     t.integer "block_amount"
     t.integer "accuracy"
-    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["character_id"], name: "index_base_stats_on_character_id"
     t.index ["deleted_at"], name: "index_base_stats_on_deleted_at"
   end
@@ -103,9 +103,9 @@ ActiveRecord::Schema.define(version: 2019_11_01_190517) do
 
   create_table "origins", force: :cascade do |t|
     t.string "name"
-    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_origins_on_deleted_at"
   end
 

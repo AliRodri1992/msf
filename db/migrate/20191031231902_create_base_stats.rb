@@ -14,9 +14,9 @@ class CreateBaseStats < ActiveRecord::Migration[5.2]
       t.integer :block_chance
       t.integer :block_amount
       t.integer :accuracy
-      t.timestamp :deleted_at
 
       t.timestamps
+      t.timestamp :deleted_at
     end
     add_index :base_stats, :deleted_at
   end
