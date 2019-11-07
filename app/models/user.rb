@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :username, presence: true
 
   belongs_to :rol
+  has_many :accounts
 
   def admin?
     self.rol.name == "administrador"

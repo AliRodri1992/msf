@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_181230) do
+ActiveRecord::Schema.define(version: 2019_11_07_181845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "nickname"
+    t.integer "level"
+    t.integer "pid"
+    t.integer "total_collection_power", default: 0
+    t.integer "strongest_team_power", default: 0
+    t.integer "war_mvp", default: 0
+    t.integer "total_characters_collected", default: 0
+    t.integer "all_time_arena_rank"
+    t.integer "latest_arena_rank"
+    t.integer "all_time_blitz_rank"
+    t.integer "latest_blitz_rank"
+    t.integer "blitz_win"
+    t.integer "characters_at_max_star_rank"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_accounts_on_deleted_at"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -188,6 +210,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_181230) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "accounts", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "base_stats", "characters"
   add_foreign_key "characters", "allegiances"
