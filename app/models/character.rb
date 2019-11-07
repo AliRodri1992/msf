@@ -9,5 +9,6 @@ class Character < ApplicationRecord
   has_one :base_stat, dependent: :destroy
 
   has_many :character_organizations
+  has_many :skills
   has_many :organizations, through: :character_organizations
 end
